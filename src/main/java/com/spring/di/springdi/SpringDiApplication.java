@@ -1,10 +1,14 @@
 package com.spring.di.springdi;
 
-import com.spring.di.springdi.controllers.MyController;
-import com.spring.di.springdi.controllers.PropertyInjectedController;
+import com.spring.di.springdi.controllers.*;
+import com.spring.di.springdi.services.ConstructorGreetingService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @SpringBootApplication
 public class SpringDiApplication {
@@ -13,12 +17,27 @@ public class SpringDiApplication {
         ApplicationContext ctx = SpringApplication.run(SpringDiApplication.class, args);
         MyController myController = (MyController) ctx.getBean("myController");
 
-        String greeting = myController.sayHello();
-        System.out.println(greeting);
+        // Primary
+        System.out.println(myController.sayHello());
 
+        // property injected (DI)
         PropertyInjectedController propertyInjectedController =
                 (PropertyInjectedController) ctx.getBean("propertyInjectedController");
         System.out.println(propertyInjectedController.getGreeting());
+
+        // setter injected (DI)
+        SetterInjectedController setterInjectedController =
+                (SetterInjectedController) ctx.getBean("setterInjectedController");
+        System.out.println(setterInjectedController.getGreeting());
+
+        // constructor injected (DI)
+        ConstructorInjectedController constructorInjectedController =
+                (ConstructorInjectedController) ctx.getBean("constructorInjectedController");
+        System.out.println(constructorInjectedController.getGreeting());
+
+        // Profiles (i18n)
+        I18nController i18nController = (I18nController) ctx.getBean("i18nController");
+        System.out.println(i18nController.sayHello());
     }
 
 }

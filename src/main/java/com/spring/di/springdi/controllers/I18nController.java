@@ -1,22 +1,19 @@
 package com.spring.di.springdi.controllers;
 
 import com.spring.di.springdi.services.GreetingService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 
 @Controller
-public class SetterInjectedController {
+public class I18nController {
 
+    private final GreetingService greetingService;
 
-    @Autowired
-    public void setGreetingService(@Qualifier("setterGreetingService") GreetingService greetingService) {
+    public I18nController(@Qualifier("i18nService") GreetingService greetingService) {
         this.greetingService = greetingService;
     }
 
-    private GreetingService greetingService;
-
-    public String getGreeting() {
+    public String sayHello() {
         return greetingService.sayGreeting();
     }
 }

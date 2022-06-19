@@ -1,12 +1,16 @@
 package com.spring.di.springdi.controllers;
 
+import com.spring.di.springdi.services.GreetingService;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 
 @Controller
+@AllArgsConstructor
 public class MyController {
 
+    private final GreetingService greetingService;
+
     public String sayHello() {
-        System.out.println("Hello World");
-        return "Hey!";
+        return greetingService.sayGreeting();
     }
 }
