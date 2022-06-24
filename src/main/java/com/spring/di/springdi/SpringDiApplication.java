@@ -1,15 +1,12 @@
 package com.spring.di.springdi;
 
 import com.spring.di.springdi.controllers.*;
-import com.spring.di.springdi.services.ConstructorGreetingService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.stream.Collectors;
-
+@ComponentScan(basePackages = "com.spring.di")
 @SpringBootApplication
 public class SpringDiApplication {
 
