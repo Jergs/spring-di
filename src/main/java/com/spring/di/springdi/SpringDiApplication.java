@@ -35,6 +35,10 @@ public class SpringDiApplication {
         // Profiles (i18n)
         I18nController i18nController = (I18nController) ctx.getBean("i18nController");
         System.out.println(i18nController.sayHello());
+
+        // Pets
+        PetController petController = (PetController) ctx.getBean("petController");
+        System.out.println(petController.whichIsTheBestPet());
     }
 
 }
