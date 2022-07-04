@@ -1,9 +1,9 @@
 package com.spring.di.springdi;
 
-import com.spring.di.springdi.config.SpringDiConfig;
-import com.spring.di.springdi.config.SpringDiConstructorConfig;
+import com.spring.di.springdi.properties.SpringDiProperties;
+import com.spring.di.springdi.properties.SpringDiConstructorProperties;
 import com.spring.di.springdi.controllers.*;
-import com.spring.di.springdi.datasource.FakeDataSource;
+import com.spring.di.springdi.properties.FakeDataProperties;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -12,7 +12,7 @@ import org.springframework.context.annotation.ComponentScan;
 
 @ComponentScan(basePackages = "com.spring.di")
 @SpringBootApplication
-@EnableConfigurationProperties(SpringDiConstructorConfig.class)
+@EnableConfigurationProperties(SpringDiConstructorProperties.class)
 public class SpringDiApplication {
 
     public static void main(String[] args) {
@@ -46,20 +46,20 @@ public class SpringDiApplication {
         System.out.println(petController.whichIsTheBestPet());
 
         System.out.println("-------Fake Data Source");
-        FakeDataSource fakeDataSource = (FakeDataSource) ctx.getBean("fakeDataSource");
-        System.out.println(fakeDataSource.getUsername() + " " + fakeDataSource.getPassword() + " " + fakeDataSource.getJdbcUrl());
+        FakeDataProperties fakeDataProperties = (FakeDataProperties) ctx.getBean("fakeDataProperties");
+        System.out.println(fakeDataProperties.getUsername() + " " + fakeDataProperties.getPassword() + " " + fakeDataProperties.getJdbcUrl());
 
         System.out.println("-------Config Properties Bean");
-        SpringDiConfig springDiConfig = (SpringDiConfig) ctx.getBean("springDiConfig");
-        System.out.println(springDiConfig.getUsername());
-        System.out.println(springDiConfig.getPassword());
-        System.out.println(springDiConfig.getUrl());
+        SpringDiProperties springDiProperties = (SpringDiProperties) ctx.getBean("springDiProperties");
+        System.out.println(springDiProperties.getUsername());
+        System.out.println(springDiProperties.getPassword());
+        System.out.println(springDiProperties.getUrl());
 
         System.out.println("-------Config Constructor Properties Bean");
-        SpringDiConstructorConfig springDiConstructorConfig = ctx.getBean(SpringDiConstructorConfig.class);
-        System.out.println(springDiConstructorConfig.getUsername());
-        System.out.println(springDiConstructorConfig.getPassword());
-        System.out.println(springDiConstructorConfig.getUrl());
+        SpringDiConstructorProperties springDiConstructorProperties = ctx.getBean(SpringDiConstructorProperties.class);
+        System.out.println(springDiConstructorProperties.getUsername());
+        System.out.println(springDiConstructorProperties.getPassword());
+        System.out.println(springDiConstructorProperties.getUrl());
     }
 
 }

@@ -1,4 +1,4 @@
-package com.spring.di.springdi.config;
+package com.spring.di.springdi.properties;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,7 +9,7 @@ import org.springframework.boot.context.properties.ConstructorBinding;
 @ConstructorBinding
 @ConfigurationProperties("di")
 @AllArgsConstructor
-public class SpringDiConstructorConfig {
+public class SpringDiConstructorProperties {
 
     private final String username;
     private final String password;
